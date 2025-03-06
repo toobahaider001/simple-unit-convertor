@@ -1,12 +1,10 @@
 import streamlit as st
 
-# Title of the app
+
 st.title("Simple Unit Converter")
 
-# Dropdown for choosing conversion type
 conversion_type = st.selectbox("Select conversion type:", ["Length", "Temperature", "Weight"])
 
-# Define unit conversion logic
 def convert_length(value, from_unit, to_unit):
     length_units = {"Meters": 1, "Kilometers": 0.001, "Centimeters": 100, "Millimeters": 1000, "Miles": 0.000621371, "Yards": 1.09361, "Feet": 3.28084, "Inches": 39.3701}
     return value * (length_units[to_unit] / length_units[from_unit])
@@ -31,10 +29,7 @@ def convert_weight(value, from_unit, to_unit):
     weight_units = {"Kilograms": 1, "Grams": 1000, "Pounds": 2.20462, "Ounces": 35.274}
     return value * (weight_units[to_unit] / weight_units[from_unit])
 
-# User input for value to convert
 value = st.number_input("Enter value:", min_value=0.0, format="%.2f")
-
-# Unit selection based on conversion type
 if conversion_type == "Length":
     from_unit = st.selectbox("From:", ["Meters", "Kilometers", "Centimeters", "Millimeters", "Miles", "Yards", "Feet", "Inches"])
     to_unit = st.selectbox("To:", ["Meters", "Kilometers", "Centimeters", "Millimeters", "Miles", "Yards", "Feet", "Inches"])
